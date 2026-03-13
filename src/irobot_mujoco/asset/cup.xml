@@ -1,0 +1,24 @@
+<mujocoinclude model="">
+<!-- =================================================
+    Copyright 2019 Vikash Kumar
+    Model   :: Objects (MuJoCoV2.0)
+    Author  :: Vikash Kumar (vikashplus@gmail.com), Sudeep Dasari (sdasari@andrew.cmu.edu )
+    Details :: https://github.com/vikashplus/object_sim
+    License :: Under Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+====================================================== -©vk©-->
+    <asset>
+        <mesh name="cup" file="../asset_env/cup/cup.stl"/>
+        <mesh name="contact_cup_0" file="../asset_env/cup/contact0.stl"/>
+        <mesh name="contact_cup_1" file="../asset_env/cup/contact1.stl"/>
+        <mesh name="contact_cup_2" file="../asset_env/cup/contact2.stl"/>
+        <mesh name="contact_cup_3" file="../asset_env/cup/contact3.stl"/>
+        <mesh name="contact_cup_4" file="../asset_env/cup/contact4.stl"/>
+        <mesh name="contact_cup_5" file="../asset_env/cup/contact5.stl"/>
+        <mesh name="contact_cup_6" file="../asset_env/cup/contact6.stl"/>
+        <mesh name="contact_cup_7" file="../asset_env/cup/contact7.stl"/>
+        <mesh name="contact_cup_8" file="../asset_env/cup/contact8.stl"/>
+        <mesh name="contact_cup_9" file="../asset_env/cup/contact9.stl"/>
+        <mesh name="contact_cup_10" file="../asset_env/cup/contact10.stl"/>
+        <mesh name="contact_cup_11" file="../asset_env/cup/contact11.stl"/>
+    </asset>
+</mujocoinclude>

@@ -1,0 +1,73 @@
+<mujoco model="scene_irobot">
+
+  <include file="irobot.xml"/>
+  <include file="cup.xml"/>
+  <include file="waterbottle.xml"/>
+  <option gravity="0 0 -9.81"/>
+  <statistic center="0.3 0 0.0" extent="100"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
+  </visual>
+  <default>
+      <geom margin="0.001"/>
+  </default>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3"
+      markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <geom name="floor" size="100 100 0.05" type="plane" material="groundplane"/>
+    <body name="table" pos="0.4 0 0.8">
+      <geom type="box" size="0.25 0.45 0.01" pos="0 0 0.05" rgba="1 1 1 0.5"/>
+    </body>
+
+    <body name="bottle" pos="0.41 -0.12 0.93" >
+      <freejoint/>
+      <inertial pos="0 0.0 0.01" mass="0.5" diaginertia="0.0005 0.0005 0.0005"/>
+      <geom name="waterbottle_visual" type="mesh" mesh="waterbottle" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0" group="1"/>
+
+      <geom type="capsule" fromto="0 0 0  0.1 0   0" size="0.003" rgba="1 0 0 1" contype="0" conaffinity="0" />
+      <geom type="capsule" fromto="0 0 0  0   0.1 0 " size="0.003" rgba="0 1 0  1" contype="0" conaffinity="0" />
+      <geom type="capsule" fromto="0 0 0  0   0   0.1" size="0.003" rgba="0 0 1 1" contype="0" conaffinity="0" />
+
+      <geom type="mesh" mesh="contact_water_0"  group="0"/>
+      <geom type="mesh" mesh="contact_water_1"  group="0"/>
+
+      
+
+    </body>
+
+    <body name="cup" pos="0.41 0.15 0.93" >
+      <freejoint/>
+      
+      <inertial pos="0 0 0.01" mass="0.15" diaginertia="0.0005 0.0005 0.0005"/>
+      
+      <geom name="cup_visual" type="mesh" mesh="cup" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0" group="1"/>
+
+      <geom type="capsule" fromto="0 0 0  0.1 0   0" size="0.003" rgba="1 0 0 1" contype="0" conaffinity="0" />
+      <geom type="capsule" fromto="0 0 0  0   0.1 0 " size="0.003" rgba="0 1 0  1" contype="0" conaffinity="0" />
+      <geom type="capsule" fromto="0 0 0  0   0   0.1" size="0.003" rgba="0 0 1 1" contype="0" conaffinity="0" />
+
+      <geom type="mesh" mesh="contact_cup_0"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_1"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_2"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_3"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_4"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_5"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_6"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_7"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_8"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_9"  group="0"/>
+      <geom type="mesh" mesh="contact_cup_10" group="0"/>
+      <geom type="mesh" mesh="contact_cup_11" group="0"/>
+    </body>
+
+  </worldbody>
+
+</mujoco>
