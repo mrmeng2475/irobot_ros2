@@ -17,6 +17,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/HeadCommand.msg"
   "msg/ClipCommand.msg"
   "msg/GripperControl.msg"
+  "msg/ObjectPose.msg"
   DEPENDENCIES geometry_msgs
 )
 

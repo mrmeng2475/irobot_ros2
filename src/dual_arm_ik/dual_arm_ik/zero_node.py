@@ -14,20 +14,20 @@ class GoToZeroNode(Node):
         # --- 新增: 定义双臂关节名称和过渡点 ---
         # 1. 定义需要控制的双臂关节名称列表 (14个)
         self.arm_joint_names = [
-            'joint1_R', 'joint2_R', 'joint3_R', 'joint4_R', 'joint5_R', 'joint6_R', 'joint7_R',
-            'joint1_L', 'joint2_L', 'joint3_L', 'joint4_L', 'joint5_L', 'joint6_L', 'joint7_L'
+            'right_arm_joint1', 'right_arm_joint2', 'right_arm_joint3', 'right_arm_joint4', 'right_arm_joint5', 'right_arm_joint6', 'right_arm_joint7',
+            'left_arm_joint1', 'left_arm_joint2', 'left_arm_joint3', 'left_arm_joint4', 'left_arm_joint5', 'left_arm_joint6', 'left_arm_joint7'
         ]
 
         # 2. 定义第一个过渡点 (Ready Pose)
         self.q_transition_1 = np.array([
-            0, 0,  0, -1.5708,  0, 0.0, 0.0,       # 右臂
+            0, 0,  0, 1.5708,  0, 0.0, 0.0,       # 右臂
             0, 0,  0, 1.5708, 0, 0.0, 0.0        # 左臂
         ])
 
         # 3. 定义第二个过渡点 (Folded Pose)
         self.q_transition_2 = np.array([
-            -1.2, 1.3,  0, -1.5708,  0, 0, 0,     # 右臂
-            -1.2, -1.3,   0, 1.5708, 0, 0, 0      # 左臂
+            -1.2, 1.3,  0, 1.5708,  0, 0, 0,     # 右臂
+            1.2, -1.3,   0, 1.5708, 0, 0, 0      # 左臂
         ])
         
         # 创建发布者和订阅者
@@ -59,13 +59,13 @@ class GoToZeroNode(Node):
             name_to_idx = {name: i for i, name in enumerate(all_joint_names)}
             
             # 获取需要检查的关节的索引和当前角度
-            idx_j4r = name_to_idx['joint4_R']
-            idx_j4l = name_to_idx['joint4_L']
+            idx_j4r = name_to_idx['right_arm_joint4']
+            idx_j4l = name_to_idx['left_arm_joint4']
             angle_j4r = q_start_full[idx_j4r]
             angle_j4l = q_start_full[idx_j4l]
 
             self.get_logger().info(f"进行初始姿态检查... "
-                                 f"joint4_R: {angle_j4r:.4f}, joint4_L: {angle_j4l:.4f}")
+                                 f"right_arm_joint4: {angle_j4r:.4f}, left_arm_joint4: {angle_j4l:.4f}")
 
             # 执行判断
             if angle_j4r > -0.8 and angle_j4l < 0.8:

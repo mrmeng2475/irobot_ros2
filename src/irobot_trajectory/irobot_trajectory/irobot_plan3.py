@@ -68,22 +68,22 @@ class TrajectoryPlannerNode(Node):
             },#移开
             {
                 "right_pose": (np.array([0.407, -0.300, 1.2531]), np.array([0.000, -0.000, 0.000, 1.000])),
-                "left_pose":  (np.array([0.407, 0.300, 1.2531]), np.array([0.000, -0.000, 0.000, 1.000])),
+                "left_pose":  (np.array([0.397, 0.300, 1.2531]), np.array([0.000, -0.000, 0.000, 1.000])),
                 "duration": 3.0  
             },#至上方上方抓取
             {
                 "right_pose": (np.array([0.407, -0.120, 1.2531]), np.array([0.000, -0.000, 0.000, 1.000])),
-                "left_pose":  (np.array([0.407, 0.150, 1.2531]), np.array([0.000, -0.000, 0.000, 1.000])),
+                "left_pose":  (np.array([0.397, 0.150, 1.2531]), np.array([0.000, -0.000, 0.000, 1.000])),
                 "duration": 3.0  
             },#至抓取点上方
             {
                 "right_pose": (np.array([0.407, -0.120, 1.0231]), np.array([0.000, -0.000, 0.000, 1.000])),
-                "left_pose":  (np.array([0.407, 0.150, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
+                "left_pose":  (np.array([0.397, 0.150, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
                 "duration": 5.0,
             },#等待抓取
             {
                 "right_pose": (np.array([0.407, -0.120, 1.0231]), np.array([0.000, -0.000, 0.000, 1.000])),
-                "left_pose":  (np.array([0.407, 0.150, 1.0231]), np.array([0.000, -0.000, 0.000, 1.000])),
+                "left_pose":  (np.array([0.397, 0.150, 1.0231]), np.array([0.000, -0.000, 0.000, 1.000])),
                 "duration": 3.0,
                 "action": [
                     {"gripper": "right", "command": "close"},
@@ -92,7 +92,7 @@ class TrajectoryPlannerNode(Node):
             },#抓取点抓取
             {
                 "right_pose": (np.array([0.407, -0.120, 1.0231]), np.array([0.000, -0.000, 0.000, 1.000])),
-                "left_pose":  (np.array([0.407, 0.150, 1.0231]), np.array([0.000, -0.000, 0.000, 1.000])),
+                "left_pose":  (np.array([0.397, 0.150, 1.0231]), np.array([0.000, -0.000, 0.000, 1.000])),
                 "duration": 2.0  
             },#等待抓取完成
             {
@@ -122,17 +122,17 @@ class TrajectoryPlannerNode(Node):
             },#恢复姿态
             {
                 "right_pose": (np.array([0.407, -0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
-                "left_pose":  (np.array([0.407, 0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
+                "left_pose":  (np.array([0.397, 0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
                 "duration": 5.0,
             },#返回放置点
             {
                 "right_pose": (np.array([0.407, -0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
-                "left_pose":  (np.array([0.407, 0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
+                "left_pose":  (np.array([0.397, 0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
                 "duration": 3.0,
             },#等待放置
             {
                 "right_pose": (np.array([0.407, -0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
-                "left_pose":  (np.array([0.407, 0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
+                "left_pose":  (np.array([0.397, 0.160, 1.0531]), np.array([0.000, -0.000, 0.000, 1.000])),
                 "duration": 3.0,
                 "action": [
                     {"gripper": "right", "command": "open"},

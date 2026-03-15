@@ -9,7 +9,7 @@ class HeadControlNode(Node):
     def __init__(self):
         super().__init__('head_control_node')
         
-        self.joint_names = ['joint_neck1', 'joint_neck2']
+        self.joint_names = ['head_joint1', 'head_joint2']
         self.joint_positions = {name: 0.0 for name in self.joint_names}
 
         # --- ROS 2 通信 ---
@@ -26,8 +26,8 @@ class HeadControlNode(Node):
 
     def head_cmd_callback(self, msg):
         # 从消息的字段中获取数据
-        self.joint_positions['joint_neck1'] = msg.neck_joint_1
-        self.joint_positions['joint_neck2'] = msg.neck_joint_2
+        self.joint_positions['head_joint1'] = msg.neck_joint_1
+        self.joint_positions['head_joint2'] = msg.neck_joint_2
         self.get_logger().info(f"收到头部指令: neck1={msg.neck_joint_1:.2f}, neck2={msg.neck_joint_2:.2f}")
 
     def publish_joint_states(self):

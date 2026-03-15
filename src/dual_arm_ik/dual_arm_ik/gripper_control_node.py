@@ -11,7 +11,7 @@ class GripperControlNode(Node):
         
         # --- 参数定义 ---
         self.max_clip_angle = 0.5 
-        self.joint_names = ['joint_clip1_R', 'joint_clip2_R', 'joint_clip1_L', 'joint_clip2_L']
+        self.joint_names = ['right_hand_joint1', 'right_hand_joint2', 'left_hand_joint1', 'left_hand_joint2']
         self.joint_positions = {name: 0.0 for name in self.joint_names}
 
         # --- ROS 2 通信 ---
@@ -37,15 +37,15 @@ class GripperControlNode(Node):
         # 从消息的 'position' 字段获取数据
         position = min(max(msg.position, -0.6), 1.0) 
         target_angle = position * self.max_clip_angle
-        self.joint_positions['joint_clip1_R'] = target_angle
-        self.joint_positions['joint_clip2_R'] = -target_angle
+        self.joint_positions['right_hand_joint1'] = target_angle
+        self.joint_positions['right_hand_joint2'] = -target_angle
         self.get_logger().info(f"收到右夹爪指令: {position:.2f}, 设定角度: +/-{target_angle:.2f}")
 
     def left_gripper_callback(self, msg):
         position = min(max(msg.position, -1.0), 0.6)
         target_angle = position * self.max_clip_angle
-        self.joint_positions['joint_clip1_L'] = target_angle
-        self.joint_positions['joint_clip2_L'] = -target_angle
+        self.joint_positions['left_hand_joint1'] = target_angle
+        self.joint_positions['left_hand_joint2'] = -target_angle
         self.get_logger().info(f"收到左夹爪指令: {position:.2f}, 设定角度: +/-{target_angle:.2f}")
 
     def publish_joint_states(self):
