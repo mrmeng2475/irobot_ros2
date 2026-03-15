@@ -8,17 +8,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="6.2317E-05 9.6607E-10 0.4314"
+        xyz="-4.03155058419071E-11 -1.18077621517283E-09 0.48049945318085"
         rpy="0 0 0" />
       <mass
-        value="8.9781" />
+        value="27.3425503962047" />
       <inertia
-        ixx="0.56562"
-        ixy="5.7133E-09"
-        ixz="-4.1028E-06"
-        iyy="0.5726"
-        iyz="-1.9413E-10"
-        izz="0.077833" />
+        ixx="2.46262186557138"
+        ixy="5.44866722990662E-09"
+        ixz="1.87177287554806E-11"
+        iyy="2.48366663877856"
+        iyz="7.67684812298434E-10"
+        izz="0.227552261685318" />
     </inertial>
     <visual>
       <origin
@@ -27,626 +27,6 @@
       <geometry>
         <mesh
           filename="package://irobot_description/meshes/base_link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/base_link.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <link
-    name="link1_R">
-    <inertial>
-      <origin
-        xyz="2.5175E-07 0.0043759 -0.02835"
-        rpy="0 0 0" />
-      <mass
-        value="0.51694" />
-      <inertia
-        ixx="0.00018144"
-        ixy="-2.7613E-09"
-        ixz="1.0578E-10"
-        iyy="0.00013224"
-        iyz="-1.4511E-05"
-        izz="0.00015609" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link1_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link1_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint1_R"
-    type="revolute">
-    <origin
-      xyz="0 -0.16 1.35"
-      rpy="1.5708 -1.5708 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="link1_R" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="7"
-      velocity="5" />
-  </joint>
-  <link
-    name="link2_R">
-    <inertial>
-      <origin
-        xyz="0.0019345 0.022847 -0.010269"
-        rpy="0 0 0" />
-      <mass
-        value="0.21541" />
-      <inertia
-        ixx="0.00031567"
-        ixy="-4.1881E-06"
-        ixz="2.9784E-06"
-        iyy="0.00025671"
-        iyz="3.424E-05"
-        izz="0.00021738" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link2_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link2_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint2_R"
-    type="revolute">
-    <origin
-      xyz="0 0 0"
-      rpy="1.5708 -1.5708 0" />
-    <parent
-      link="link1_R" />
-    <child
-      link="link2_R" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="7"
-      velocity="5" />
-  </joint>
-  <link
-    name="link3_R">
-    <inertial>
-      <origin
-        xyz="3.9458E-05 0.0034161 0.09448"
-        rpy="0 0 0" />
-      <mass
-        value="0.83206" />
-      <inertia
-        ixx="0.0014354"
-        ixy="1.2737E-06"
-        ixz="1.3438E-06"
-        iyy="0.0014359"
-        iyz="-2.5463E-05"
-        izz="0.00055691" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link3_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link3_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint3_R"
-    type="revolute">
-    <origin
-      xyz="0 0.27 0"
-      rpy="1.5708 -1.5708 0" />
-    <parent
-      link="link2_R" />
-    <child
-      link="link3_R" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="10"
-      velocity="5" />
-  </joint>
-  <link
-    name="link4_R">
-    <inertial>
-      <origin
-        xyz="0.0044083 0.028826 0.0033052"
-        rpy="0 0 0" />
-      <mass
-        value="0.13287" />
-      <inertia
-        ixx="0.00019138"
-        ixy="3.311E-07"
-        ixz="-3.4688E-06"
-        iyy="0.00016001"
-        iyz="-2.3075E-05"
-        izz="0.00011635" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link4_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link4_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint4_R"
-    type="revolute">
-    <origin
-      xyz="0 0 0"
-      rpy="1.5708 1.5708 0" />
-    <parent
-      link="link3_R" />
-    <child
-      link="link4_R" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="10"
-      velocity="5" />
-  </joint>
-  <link
-    name="link5_R">
-    <inertial>
-      <origin
-        xyz="2.5006E-06 -0.0041663 -0.094382"
-        rpy="0 0 0" />
-      <mass
-        value="0.64819" />
-      <inertia
-        ixx="0.00073816"
-        ixy="7.1837E-08"
-        ixz="-1.238E-07"
-        iyy="0.0006904"
-        iyz="7.2492E-06"
-        izz="0.00022909" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link5_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link5_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint5_R"
-    type="revolute">
-    <origin
-      xyz="0 0.24 0"
-      rpy="-1.5708 -1.5708 0" />
-    <parent
-      link="link4_R" />
-    <child
-      link="link5_R" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link6_R">
-    <inertial>
-      <origin
-        xyz="4.2294E-08 0.0117 -0.00098129"
-        rpy="0 0 0" />
-      <mass
-        value="0.289432" />
-      <inertia
-        ixx="3.7271E-05"
-        ixy="-2.4071E-11"
-        ixz="9.755E-11"
-        iyy="3.4392E-05"
-        iyz="-7.3586E-07"
-        izz="1.847E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link6_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link6_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint6_R"
-    type="revolute">
-    <origin
-      xyz="0 0 0"
-      rpy="1.5708 0 0" />
-    <parent
-      link="link5_R" />
-    <child
-      link="link6_R" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link7_R">
-    <inertial>
-      <origin
-        xyz="-0.0058253 0.0069024 0.071501"
-        rpy="0 0 0" />
-      <mass
-        value="0.328683" />
-      <inertia
-        ixx="0.00011346"
-        ixy="-4.179E-06"
-        ixz="1.0743E-05"
-        iyy="8.4473E-05"
-        iyz="-1.4833E-06"
-        izz="0.00011977" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link7_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link7_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint7_R"
-    type="revolute">
-    <origin
-      xyz="0 0 0"
-      rpy="-1.5708 0 0" />
-    <parent
-      link="link6_R" />
-    <child
-      link="link7_R" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link_clip1_R">
-    <inertial>
-      <origin
-        xyz="0.035706 0.021577 -3.2549E-07"
-        rpy="0 0 0" />
-      <mass
-        value="0.046425" />
-      <inertia
-        ixx="6.3697E-05"
-        ixy="-1.5504E-05"
-        ixz="6.7385E-10"
-        iyy="9.3082E-05"
-        iyz="1.1726E-10"
-        izz="5.1671E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_clip1_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.69804 0.69804 0.69804 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_clip1_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_clip1_R"
-    type="revolute">
-    <origin
-      xyz="-0.018 0 0.077"
-      rpy="1.5708 -1.5708 0" />
-    <parent
-      link="link7_R" />
-    <child
-      link="link_clip1_R" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link_clip2_R">
-    <inertial>
-      <origin
-        xyz="0.036517 -0.020929 0.0010504"
-        rpy="0 0 0" />
-      <mass
-        value="0.049325" />
-      <inertia
-        ixx="6.9459E-05"
-        ixy="1.6614E-05"
-        ixz="1.8896E-06"
-        iyy="0.00010403"
-        iyz="-1.0839E-06"
-        izz="5.7557E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_clip2_R.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.69804 0.69804 0.69804 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_clip2_R.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_clip2_R"
-    type="revolute">
-    <origin
-      xyz="0.018 0 0.077"
-      rpy="1.5708 -1.5708 0" />
-    <parent
-      link="link7_R" />
-    <child
-      link="link_clip2_R" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link1_L">
-    <inertial>
-      <origin
-        xyz="-2.5175E-07 0.0043759 0.02835"
-        rpy="0 0 0" />
-      <mass
-        value="0.51694" />
-      <inertia
-        ixx="0.00018144"
-        ixy="2.7613E-09"
-        ixz="1.0578E-10"
-        iyy="0.00013224"
-        iyz="1.4511E-05"
-        izz="0.00015609" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link1_L.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link1_L.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint1_L"
-    type="revolute">
-    <origin
-      xyz="0 0.16 1.35"
-      rpy="1.5708 -1.5708 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="link1_L" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="7"
-      velocity="5" />
-  </joint>
-  <link
-    name="link2_L">
-    <inertial>
-      <origin
-        xyz="0.0019344708070379 -0.0228474645182375 0.0102694951191551"
-        rpy="0 0 0" />
-      <mass
-        value="0.215408647409358" />
-      <inertia
-        ixx="0.000315668257840379"
-        ixy="4.18810744279108E-06"
-        ixz="-2.97840448987141E-06"
-        iyy="0.00025670772779746"
-        iyz="3.42397132498776E-05"
-        izz="0.000217377576079757" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link2_L.STL" />
       </geometry>
       <material
         name="">
@@ -660,43 +40,25 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://irobot_description/meshes/link2_L.STL" />
+          filename="package://irobot_description/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
-  <joint
-    name="joint2_L"
-    type="revolute">
-    <origin
-      xyz="0 0 0"
-      rpy="-1.5708 -1.5708 0" />
-    <parent
-      link="link1_L" />
-    <child
-      link="link2_L" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="7"
-      velocity="5" />
-  </joint>
   <link
-    name="link3_L">
+    name="right_arm_link1">
     <inertial>
       <origin
-        xyz="3.9458E-05 0.0034161 0.09448"
+        xyz="-0.00437589461485717 0.0283503811814955 2.51747746204956E-07"
         rpy="0 0 0" />
       <mass
-        value="0.83206" />
+        value="0.111538042947357" />
       <inertia
-        ixx="0.0014354"
-        ixy="1.2737E-06"
-        ixz="1.3438E-06"
-        iyy="0.0014359"
-        iyz="-2.5463E-05"
-        izz="0.00055691" />
+        ixx="0.000126139683280674"
+        ixy="-1.38408100768097E-05"
+        ixz="2.63390042441737E-09"
+        iyy="0.00014888321100676"
+        iyz="-1.00893899943859E-10"
+        izz="0.000173066454347275" />
     </inertial>
     <visual>
       <origin
@@ -704,239 +66,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://irobot_description/meshes/link3_L.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link3_L.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint3_L"
-    type="revolute">
-    <origin
-      xyz="0 -0.27 0"
-      rpy="-1.5708 1.5708 0" />
-    <parent
-      link="link2_L" />
-    <child
-      link="link3_L" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="10"
-      velocity="5" />
-  </joint>
-  <link
-    name="link4_L">
-    <inertial>
-      <origin
-        xyz="-0.0044114 0.028827 0.0032962"
-        rpy="0 0 0" />
-      <mass
-        value="0.13285" />
-      <inertia
-        ixx="0.00019137"
-        ixy="-3.3185E-07"
-        ixz="3.472E-06"
-        iyy="0.00016"
-        iyz="-2.3076E-05"
-        izz="0.00011635" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link4_L.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link4_L.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint4_L"
-    type="revolute">
-    <origin
-      xyz="0 0 0"
-      rpy="1.5708 1.5708 0" />
-    <parent
-      link="link3_L" />
-    <child
-      link="link4_L" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="10"
-      velocity="5" />
-  </joint>
-  <link
-    name="link5_L">
-    <inertial>
-      <origin
-        xyz="2.4481E-06 -0.0041663 -0.094382"
-        rpy="0 0 0" />
-      <mass
-        value="0.64819" />
-      <inertia
-        ixx="0.00073816"
-        ixy="7.2309E-08"
-        ixz="-1.2242E-07"
-        iyy="0.0006904"
-        iyz="7.2483E-06"
-        izz="0.00022909" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link5_L.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link5_L.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint5_L"
-    type="revolute">
-    <origin
-      xyz="0 0.24 0"
-      rpy="-1.5708 -1.5708 0" />
-    <parent
-      link="link4_L" />
-    <child
-      link="link5_L" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link6_L">
-    <inertial>
-      <origin
-        xyz="4.2294E-08 0.0117 -0.00098129"
-        rpy="0 0 0" />
-      <mass
-        value="0.289432" />
-      <inertia
-        ixx="3.7271E-05"
-        ixy="-2.4071E-11"
-        ixz="9.755E-11"
-        iyy="3.4392E-05"
-        iyz="-7.3586E-07"
-        izz="1.847E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link6_L.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link6_L.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint6_L"
-    type="revolute">
-    <origin
-      xyz="0 -0.0005 0"
-      rpy="1.5708 0 0" />
-    <parent
-      link="link5_L" />
-    <child
-      link="link6_L" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link7_L">
-    <inertial>
-      <origin
-        xyz="0.00607123167086257 0.00749976634484106 0.0716117472500631"
-        rpy="0 0 0" />
-      <mass
-        value="0.33071915360441" />
-      <inertia
-        ixx="0.000113510051760032"
-        ixy="4.17892157581446E-06"
-        ixz="-1.07431371374432E-05"
-        iyy="8.45678724975597E-05"
-        iyz="-1.4836781168221E-06"
-        izz="0.000119822264164082" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link7_L.STL" />
+          filename="package://irobot_description/meshes/right_arm_link1.STL" />
       </geometry>
       <material
         name="">
@@ -950,217 +80,43 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://irobot_description/meshes/link7_L.STL" />
+          filename="package://irobot_description/meshes/right_arm_link1.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="joint7_L"
+    name="right_arm_joint1"
     type="revolute">
     <origin
-      xyz="0 0 0"
-      rpy="-1.5708 0 0" />
-    <parent
-      link="link6_L" />
-    <child
-      link="link7_L" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link_clip1_L">
-    <inertial>
-      <origin
-        xyz="0.0357062080180098 -0.0215773738573617 3.25486620766924E-07"
-        rpy="0 0 0" />
-      <mass
-        value="0.0464245731590219" />
-      <inertia
-        ixx="6.36974773430474E-05"
-        ixy="1.55036216537389E-05"
-        ixz="-6.73848882791432E-10"
-        iyy="9.30815103696084E-05"
-        iyz="1.17258365002596E-10"
-        izz="5.16706792509683E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_clip1_L.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_clip1_L.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_clip1_L"
-    type="revolute">
-    <origin
-      xyz="0.018 0 0.077"
-      rpy="1.5708 -1.5708 0" />
-    <parent
-      link="link7_L" />
-    <child
-      link="link_clip1_L" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link_clip2_L">
-    <inertial>
-      <origin
-        xyz="0.0365169835636618 0.0209290671313445 -0.00105043811277783"
-        rpy="0 0 0" />
-      <mass
-        value="0.049325480054978" />
-      <inertia
-        ixx="6.94591135342316E-05"
-        ixy="-1.66142603365939E-05"
-        ixz="-1.88959779772784E-06"
-        iyy="0.000104034876104666"
-        iyz="-1.0838794419823E-06"
-        izz="5.7556875370648E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_clip2_L.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_clip2_L.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_clip2_L"
-    type="revolute">
-    <origin
-      xyz="-0.018 0 0.077"
-      rpy="1.5708 -1.5708 0" />
-    <parent
-      link="link7_L" />
-    <child
-      link="link_clip2_L" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
-  </joint>
-  <link
-    name="link_neck1">
-    <inertial>
-      <origin
-        xyz="-7.1412E-08 0.0088561 -0.022837"
-        rpy="0 0 0" />
-      <mass
-        value="0.26949" />
-      <inertia
-        ixx="1.8827E-05"
-        ixy="7.6949E-11"
-        ixz="1.2097E-10"
-        iyy="1.7182E-05"
-        iyz="-4.7921E-06"
-        izz="2.0902E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_neck1.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://irobot_description/meshes/link_neck1.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="joint_neck1"
-    type="revolute">
-    <origin
-      xyz="0 0 1.462"
+      xyz="0 -0.16 1.45"
       rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
-      link="link_neck1" />
+      link="right_arm_link1" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 -1 0" />
     <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
   </joint>
   <link
-    name="link_neck2">
+    name="right_arm_link2">
     <inertial>
       <origin
-        xyz="0.014571 -0.05844 0.005849"
+        xyz="-0.00135652498073273 -0.00240389560467899 -0.0283927590638917"
         rpy="0 0 0" />
       <mass
-        value="0.16341" />
+        value="0.165338288271136" />
       <inertia
-        ixx="0.00055921"
-        ixy="-7.0342E-05"
-        ixz="1.3864E-05"
-        iyy="0.00087714"
-        iyz="-3.6644E-05"
-        izz="0.0005704" />
+        ixx="0.000193053455513287"
+        ixy="-2.84156359385835E-06"
+        ixz="-3.26589128466923E-05"
+        iyy="0.000293790755757263"
+        iyz="-3.99392709986825E-06"
+        izz="0.000237555946305227" />
     </inertial>
     <visual>
       <origin
@@ -1168,12 +124,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://irobot_description/meshes/link_neck2.STL" />
+          filename="package://irobot_description/meshes/right_arm_link2.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.69804 0.69804 0.69804 1" />
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
     <collision>
@@ -1182,26 +138,1193 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://irobot_description/meshes/link_neck2.STL" />
+          filename="package://irobot_description/meshes/right_arm_link2.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="joint_neck2"
+    name="right_arm_joint2"
     type="revolute">
     <origin
       xyz="0 0 0"
-      rpy="-1.5708 0 0" />
+      rpy="0 0 0" />
     <parent
-      link="link_neck1" />
+      link="right_arm_link1" />
     <child
-      link="link_neck2" />
+      link="right_arm_link2" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_arm_link3">
+    <inertial>
+      <origin
+        xyz="2.46033708448953E-05 0.00094636225337727 0.107581967062591"
+        rpy="0 0 0" />
+      <mass
+        value="0.320011699259806" />
+      <inertia
+        ixx="0.00125026228575915"
+        ixy="-3.97564602524244E-07"
+        ixz="1.997675007449E-07"
+        iyy="0.00120740399174918"
+        iyz="-2.41300435154786E-05"
+        izz="0.000367622340369488" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.27"
+      rpy="0 0 0" />
+    <parent
+      link="right_arm_link2" />
+    <child
+      link="right_arm_link3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_arm_link4">
+    <inertial>
+      <origin
+        xyz="-0.0047412427205724 -2.65753422773463E-06 -0.0310033222642379"
+        rpy="0 0 0" />
+      <mass
+        value="0.117835638004831" />
+      <inertia
+        ixx="0.000181282361586338"
+        ixy="-3.30868341083682E-06"
+        ixz="3.15808953742706E-07"
+        iyy="0.00010847616864473"
+        iyz="-2.20100296711277E-05"
+        izz="0.000151365396194724" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint4"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="right_arm_link3" />
+    <child
+      link="right_arm_link4" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_arm_link5">
+    <inertial>
+      <origin
+        xyz="-2.56644904232091E-06 -0.00342070258802077 0.0959187436687075"
+        rpy="0 0 0" />
+      <mass
+        value="0.174905784633858" />
+      <inertia
+        ixx="0.000703846555276299"
+        ixy="-6.85218958739836E-08"
+        ixz="-1.18081893365163E-07"
+        iyy="0.000658061218966197"
+        iyz="-6.91458581728201E-06"
+        izz="0.000218275940263451" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint5"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.24"
+      rpy="0 0 0" />
+    <parent
+      link="right_arm_link4" />
+    <child
+      link="right_arm_link5" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_arm_link6">
+    <inertial>
+      <origin
+        xyz="-4.93171863513787E-08 0.00114460648396655 -0.0146243842096349"
+        rpy="0 0 0" />
+      <mass
+        value="0.0486001428262178" />
+      <inertia
+        ixx="3.52778466521552E-05"
+        ixy="9.31504923897234E-11"
+        ixz="-2.29785518995385E-11"
+        iyy="1.68857107115075E-05"
+        iyz="-7.01900008969916E-07"
+        izz="3.26836824946383E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint6"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="right_arm_link5" />
+    <child
+      link="right_arm_link6" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_arm_link7">
+    <inertial>
+      <origin
+        xyz="0.00319621693446917 -0.00629153923904963 -0.0304507499050739"
+        rpy="0 0 0" />
+      <mass
+        value="0.0870256108294335" />
+      <inertia
+        ixx="8.28236505725283E-05"
+        ixy="-4.13945896625723E-06"
+        ixz="1.14426413884682E-06"
+        iyy="0.000110927216673473"
+        iyz="-1.05185512571402E-05"
+        izz="0.000115773435487047" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_arm_link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint7"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.042"
+      rpy="0 0 0" />
+    <parent
+      link="right_arm_link6" />
+    <child
+      link="right_arm_link7" />
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-3"
-      upper="3"
-      effort="6"
-      velocity="3" />
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_arm_link8">
+    <inertial>
+      <origin
+        xyz="-0.00319621677320988 0.00629154051574193 -0.0304507490924729"
+        rpy="0 0 0" />
+      <mass
+        value="0.0001" />
+      <inertia
+        ixx="8.28236470931836E-05"
+        ixy="-4.13945950045532E-06"
+        ixz="-1.14426464298259E-06"
+        iyy="0.00011092721907604"
+        iyz="1.05185493725818E-05"
+        izz="0.000115773431474745" />
+    </inertial>
+  </link>
+  <joint
+    name="right_arm_joint8"
+    type="fixed">
+    <origin
+      xyz="0 0 -0.1"
+      rpy="0 1.5708 0" />
+    <parent
+      link="right_arm_link7" />
+    <child
+      link="right_arm_link8" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_hand_link1">
+    <inertial>
+      <origin
+        xyz="-0.00105052370896491 0.0130684328125666 -0.040009041083133"
+        rpy="0 0 0" />
+      <mass
+        value="0.047048635404105" />
+      <inertia
+        ixx="5.49000708742905E-05"
+        ixy="-6.45806518756772E-07"
+        ixz="1.97491363940836E-06"
+        iyy="0.000104178355539054"
+        iyz="7.9729013982171E-06"
+        izz="6.13073742160134E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_hand_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_hand_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_hand_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0.018 -0.037"
+      rpy="0 0 0" />
+    <parent
+      link="right_arm_link7" />
+    <child
+      link="right_hand_link1" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_hand_link2">
+    <inertial>
+      <origin
+        xyz="0.00100033016887621 -0.0137623698281354 -0.0393841760374933"
+        rpy="0 0 0" />
+      <mass
+        value="0.0442819350381612" />
+      <inertia
+        ixx="4.92858393516493E-05"
+        ixy="-2.43612377707472E-11"
+        ixz="6.49428514515562E-10"
+        iyy="9.35567831325479E-05"
+        iyz="-7.88619651546233E-06"
+        izz="5.59863448981932E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_hand_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/right_hand_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_hand_joint2"
+    type="revolute">
+    <origin
+      xyz="0 -0.018 -0.037"
+      rpy="0 0 0" />
+    <parent
+      link="right_arm_link7" />
+    <child
+      link="right_hand_link2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_link1">
+    <inertial>
+      <origin
+        xyz="-0.00437589460463243 -0.0283503811814946 -2.51747745316777E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.111538042947354" />
+      <inertia
+        ixx="0.000126139683280671"
+        ixy="1.38408100768087E-05"
+        ixz="-2.63390042417635E-09"
+        iyy="0.000148883211006756"
+        iyz="-1.00893899750667E-10"
+        izz="0.000173066454347271" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0.159 1.45"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_arm_link1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_link2">
+    <inertial>
+      <origin
+        xyz="-0.00135692280082196 0.00240461019586163 -0.0283940690494211"
+        rpy="0 0 0" />
+      <mass
+        value="0.165341819684868" />
+      <inertia
+        ixx="0.000193056928465239"
+        ixy="2.84205374621536E-06"
+        ixz="-3.26609480597622E-05"
+        iyy="0.000293788314663986"
+        iyz="3.99201347687957E-06"
+        izz="0.000237555676961763" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="left_arm_link1" />
+    <child
+      link="left_arm_link2" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_link3">
+    <inertial>
+      <origin
+        xyz="2.46033928582292E-05 0.000946362227643743 0.107581967066662"
+        rpy="0 0 0" />
+      <mass
+        value="0.320011699745351" />
+      <inertia
+        ixx="0.00125026228575485"
+        ixy="-3.97564574635122E-07"
+        ixz="1.99767539889785E-07"
+        iyy="0.00120740399177985"
+        iyz="-2.41300434916202E-05"
+        izz="0.000367622340388326" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.27"
+      rpy="0 0 0" />
+    <parent
+      link="left_arm_link2" />
+    <child
+      link="left_arm_link3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_link4">
+    <inertial>
+      <origin
+        xyz="-0.00474124271012698 -2.6575300002829E-06 -0.0310033222637625"
+        rpy="0 0 0" />
+      <mass
+        value="0.117835638004833" />
+      <inertia
+        ixx="0.000181282361586335"
+        ixy="-3.30868341068367E-06"
+        ixz="3.15808953910377E-07"
+        iyy="0.000108476168645353"
+        iyz="-2.20100296717605E-05"
+        izz="0.000151365396194104" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint4"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="left_arm_link3" />
+    <child
+      link="left_arm_link4" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_link5">
+    <inertial>
+      <origin
+        xyz="2.5334164625166E-06 0.00342067960816572 0.0959186347984827"
+        rpy="0 0 0" />
+      <mass
+        value="0.174906129247525" />
+      <inertia
+        ixx="0.000703847929082198"
+        ixy="-6.8590071591752E-08"
+        ixz="1.17722492075986E-07"
+        iyy="0.000658062492946221"
+        iyz="6.91440324940966E-06"
+        izz="0.000218276234467037" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint5"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.24"
+      rpy="0 0 0" />
+    <parent
+      link="left_arm_link4" />
+    <child
+      link="left_arm_link5" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_link6">
+    <inertial>
+      <origin
+        xyz="4.93277263973231E-08 -0.00114460648807888 -0.0146243842091427"
+        rpy="0 0 0" />
+      <mass
+        value="0.0486001428262173" />
+      <inertia
+        ixx="3.52778466521547E-05"
+        ixy="9.31504873292639E-11"
+        ixz="2.29785704334776E-11"
+        iyy="1.68857107114874E-05"
+        iyz="7.01900008746186E-07"
+        izz="3.26836824946577E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint6"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="left_arm_link5" />
+    <child
+      link="left_arm_link6" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_link7">
+    <inertial>
+      <origin
+        xyz="-0.00319621677320988 0.00629154051574193 -0.0304507490924729"
+        rpy="0 0 0" />
+      <mass
+        value="0.0870256121526239" />
+      <inertia
+        ixx="8.28236470931836E-05"
+        ixy="-4.13945950045532E-06"
+        ixz="-1.14426464298259E-06"
+        iyy="0.00011092721907604"
+        iyz="1.05185493725818E-05"
+        izz="0.000115773431474745" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_arm_link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint7"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.042"
+      rpy="0 0 0" />
+    <parent
+      link="left_arm_link6" />
+    <child
+      link="left_arm_link7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_link8">
+    <inertial>
+      <origin
+        xyz="-0.00319621677320988 0.00629154051574193 -0.0304507490924729"
+        rpy="0 0 0" />
+      <mass
+        value="0.0001" />
+      <inertia
+        ixx="8.28236470931836E-05"
+        ixy="-4.13945950045532E-06"
+        ixz="-1.14426464298259E-06"
+        iyy="0.00011092721907604"
+        iyz="1.05185493725818E-05"
+        izz="0.000115773431474745" />
+    </inertial>
+  </link>
+  <joint
+    name="left_arm_joint8"
+    type="fixed">
+    <origin
+      xyz="0 0 -0.1"
+      rpy="0 1.5708 0" />
+    <parent
+      link="left_arm_link7" />
+    <child
+      link="left_arm_link8" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_hand_link1">
+    <inertial>
+      <origin
+        xyz="0.00105052422055758 -0.0128047841848909 -0.0400941971712422"
+        rpy="0 0 0" />
+      <mass
+        value="0.0470486318704618" />
+      <inertia
+        ixx="5.49000653562494E-05"
+        ixy="-6.32792517426004E-07"
+        ixz="-1.97912193271751E-06"
+        iyy="0.000104281453733055"
+        iyz="-7.69001163766405E-06"
+        izz="6.12042673215627E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_hand_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_hand_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_hand_joint1"
+    type="revolute">
+    <origin
+      xyz="0 -0.018 -0.037"
+      rpy="0 0 0" />
+    <parent
+      link="left_arm_link7" />
+    <child
+      link="left_hand_link1" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_hand_link2">
+    <inertial>
+      <origin
+        xyz="0.00099965211163444 0.0135053501299161 -0.0394730570709099"
+        rpy="0 0 0" />
+      <mass
+        value="0.0442819627175458" />
+      <inertia
+        ixx="4.92858364206083E-05"
+        ixy="-2.79888151614991E-11"
+        ixz="-6.61837644253381E-10"
+        iyy="9.36580378761227E-05"
+        iyz="7.64062589784704E-06"
+        izz="5.58851731310304E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_hand_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/left_hand_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_hand_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0.018 -0.037"
+      rpy="0 0 0" />
+    <parent
+      link="left_arm_link7" />
+    <child
+      link="left_hand_link2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="head_link1">
+    <inertial>
+      <origin
+        xyz="-2.11401481935299E-07 -0.00475254528197828 -0.0181488809877877"
+        rpy="0 0 0" />
+      <mass
+        value="0.0519399235563418" />
+      <inertia
+        ixx="5.73606543554257E-05"
+        ixy="2.89547973575058E-10"
+        ixz="-6.51576741803995E-11"
+        iyy="2.70397611080903E-05"
+        iyz="4.08542316657039E-06"
+        izz="5.68872674443318E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/head_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/head_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="head_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 1.5945"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="head_link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="head_link2">
+    <inertial>
+      <origin
+        xyz="0.00754337622316673 -0.00142801763417085 0.045996702229534"
+        rpy="0 0 0" />
+      <mass
+        value="0.208098890341154" />
+      <inertia
+        ixx="0.000726495406668992"
+        ixy="2.33787951483873E-06"
+        ixz="7.34120450960808E-05"
+        iyy="0.000595052378165249"
+        iyz="1.38127434761636E-05"
+        izz="0.0010586404894827" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/head_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/head_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="head_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="head_link1" />
+    <child
+      link="head_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="head_link3">
+    <inertial>
+      <origin
+        xyz="-0.0797003151875269 -3.69255289630716E-05 -1.06250309895112"
+        rpy="0 0 0" />
+      <mass
+        value="30.6136843115723" />
+      <inertia
+        ixx="9.83658726519607"
+        ixy="4.15737839521527E-06"
+        ixz="-0.00107635094962425"
+        iyy="9.37088758460739"
+        iyz="0.000825131143915606"
+        izz="0.72165297474542" />
+    </inertial>
+    <!-- <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/head_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://irobot_description/meshes/head_link3.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="head_joint3"
+    type="fixed">
+    <origin
+      xyz="0.079721 0 0.029759"
+      rpy="0 0 0" />
+    <parent
+      link="head_link2" />
+    <child
+      link="head_link3" />
+    <axis
+      xyz="0 0 0" />
   </joint>
 </robot>

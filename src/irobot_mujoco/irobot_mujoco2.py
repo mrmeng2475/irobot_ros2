@@ -32,7 +32,7 @@ class DualArmIDControllerNode(Node):
         # ---  加载 Pinocchio 模型 ---
         try:
             
-            urdf_filename = os.path.expanduser("/home/irobot/WorkSpace/irobot_ros2_foxy/src/irobot_mujoco/asset/urdf/irobot.urdf")
+            urdf_filename = os.path.expanduser("/root/ros2_ws/irobot_ros2_humble/src/irobot_mujoco/asset/urdf/irobot.urdf")
             self.model_pin = pin.buildModelFromUrdf(urdf_filename)
             self.data_pin = self.model_pin.createData()
             self.get_logger().info(f"✅ Pinocchio 模型加载成功! Path: {urdf_filename}")
@@ -57,11 +57,13 @@ class DualArmIDControllerNode(Node):
         self.get_logger().info(f"MuJoCo 执行器数量: {self.model_mj.nu}")
         
         
-        self.actuated_joint_names = ['joint1_R', 'joint2_R', 'joint3_R', 'joint4_R', 'joint5_R', 'joint6_R', 'joint7_R',
-                                     'joint_clip1_R','joint_clip2_R',
-                                     'joint1_L', 'joint2_L', 'joint3_L', 'joint4_L', 'joint5_L', 'joint6_L', 'joint7_L',
-                                     'joint_clip1_L','joint_clip2_L',
-                                     'joint_neck1','joint_neck2']
+        self.actuated_joint_names = [
+            'right_arm_joint1', 'right_arm_joint2', 'right_arm_joint3', 'right_arm_joint4', 'right_arm_joint5', 'right_arm_joint6', 'right_arm_joint7',
+            'right_hand_joint1', 'right_hand_joint2',
+            'left_arm_joint1', 'left_arm_joint2', 'left_arm_joint3', 'left_arm_joint4', 'left_arm_joint5', 'left_arm_joint6', 'left_arm_joint7',
+            'left_hand_joint1', 'left_hand_joint2',
+            'head_joint1', 'head_joint2'
+                                     ]
         print(self.actuated_joint_names)
         # 获取受控关节在MuJoCo模型完整qpos/qvel向量中的索引
         self.actuated_joint_indices = [mujoco.mj_name2id(self.model_mj, mujoco.mjtObj.mjOBJ_JOINT, name) for name in self.actuated_joint_names]
@@ -69,8 +71,8 @@ class DualArmIDControllerNode(Node):
 
         # --- 4. 初始化控制器和状态变量 ---
         # PD控制器增益
-        self.Kp = np.diag([200.0] * self.nv_pin)
-        self.Kd = np.diag([20.0] * self.nv_pin) # 适当增加阻尼以获得更稳定的效果
+        self.Kp = np.diag([500.0] * self.nv_pin)
+        self.Kd = np.diag([50.0] * self.nv_pin) # 适当增加阻尼以获得更稳定的效果
 
         # 期望状态 (q_des, v_des, a_des) - 将由ROS话题更新
         # 我们需要为模型的全部自由度（nq）定义期望位置
@@ -137,30 +139,58 @@ class DualArmIDControllerNode(Node):
 
                 # 2. 只有在收到有效的期望位置后才进行控制和仿真
                 if self.is_joint_state_received:
-                    # 获取 MuJoCo 当前状态
-                    q_full = self.data_mj.qpos
-                    v_full = self.data_mj.qvel
                     
-                    # 使用我们之前计算的索引来提取机器人关节的状态
-                    q_robot_current = q_full[self.actuated_joint_indices]
-                    v_robot_current = v_full[self.actuated_joint_indices]
+                    # ---------------- A. 构建 Pinocchio 专属的 q 和 v ----------------
+                    # 初始化符合 Pinocchio 内部顺序的全零数组
+                    q_pin = np.zeros(self.model_pin.nq)
+                    v_pin = np.zeros(self.model_pin.nv)
+                    
+                    # 遍历每一个受控关节，精准获取它在两个引擎中的独立索引
+                    for name in self.actuated_joint_names:
+                        # 获取 MuJoCo 中的索引并提取状态
+                        mj_joint_id = mujoco.mj_name2id(self.model_mj, mujoco.mjtObj.mjOBJ_JOINT, name)
+                        mj_qpos_adr = self.model_mj.jnt_qposadr[mj_joint_id]
+                        mj_dof_adr = self.model_mj.jnt_dofadr[mj_joint_id]
+                        
+                        # 获取 Pinocchio 中的索引并赋值
+                        pin_joint_id = self.model_pin.getJointId(name)
+                        pin_idx_q = self.model_pin.joints[pin_joint_id].idx_q
+                        pin_idx_v = self.model_pin.joints[pin_joint_id].idx_v
+                        
+                        q_pin[pin_idx_q] = self.data_mj.qpos[mj_qpos_adr]
+                        v_pin[pin_idx_v] = self.data_mj.qvel[mj_dof_adr]
 
-                    # --- 核心：逆动力学计算 ---
-                    # a. 前馈力矩 (Feedforward)
-                    # 使用期望状态计算理论上需要的力矩
-                    tau_ff = pin.rnea(self.model_pin, self.data_pin, self.q_des, self.v_des, self.a_des)
+                    # ---------------- B. 计算逆动力学 ----------------
+                    # 此时传入的 q_pin 和 v_pin 完美符合 Pinocchio 的胃口
+                    tau_ff_pin = pin.rnea(self.model_pin, self.data_pin, q_pin, v_pin, self.a_des)
 
-                    # b. 反馈力矩 (Feedback - PD Controller)
-                    # 计算当前状态与期望状态的误差，并生成纠正力矩
-                    q_error = self.q_des - q_robot_current
-                    v_error = self.v_des - v_robot_current
-                    tau_fb = self.Kp @ q_error + self.Kd @ v_error
-
-                    # c. 组合控制律
-                    tau_control = tau_ff + tau_fb
-
-                    # d. 应用总力矩到 MuJoCo 执行器
-                    self.data_mj.ctrl[:] = tau_control
+                    # ---------------- C. 计算 PD 反馈并精准赋值给 MuJoCo ----------------
+                    for i, name in enumerate(self.actuated_joint_names):
+                        # 获取该关节的 MuJoCo 索引和 Pinocchio 速度索引
+                        mj_joint_id = mujoco.mj_name2id(self.model_mj, mujoco.mjtObj.mjOBJ_JOINT, name)
+                        mj_dof_adr = self.model_mj.jnt_dofadr[mj_joint_id]
+                        
+                        pin_joint_id = self.model_pin.getJointId(name)
+                        pin_idx_v = self.model_pin.joints[pin_joint_id].idx_v
+                        
+                        # 计算单个关节的 PD 误差
+                        q_curr_single = self.data_mj.qpos[self.model_mj.jnt_qposadr[mj_joint_id]]
+                        v_curr_single = self.data_mj.qvel[mj_dof_adr]
+                        
+                        # 假设此时 self.q_des 的顺序是对应 actuated_joint_names 的
+                        q_err = self.q_des[i] - q_curr_single
+                        v_err = self.v_des[i] - v_curr_single
+                        
+                        # 计算该关节的独立控制总力矩 (假设 Kp/Kd是对角阵，直接取对角线元素)
+                        # 注意：如果你之前 Kp 是矩阵，这里简化为 Kp[i, i]
+                        tau_fb_single = self.Kp[i, i] * q_err + self.Kd[i, i] * v_err
+                        
+                        # 前馈 + 反馈
+                        tau_total_single = tau_ff_pin[pin_idx_v] + tau_fb_single
+                        
+                        # 找到该关节对应的 Motor 执行器 ID 并赋值
+                        mj_actuator_id = mujoco.mj_name2id(self.model_mj, mujoco.mjtObj.mjOBJ_ACTUATOR, name)
+                        self.data_mj.ctrl[mj_actuator_id] = tau_total_single
 
                     # 3. 运行 MuJoCo 仿真一步
                     mujoco.mj_step(self.model_mj, self.data_mj)

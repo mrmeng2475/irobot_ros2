@@ -106,14 +106,14 @@
                     <body name="link_clip1_R" pos="-0.018 0 0.077" quat="0.499998 0.5 -0.5 0.500002">
                       <inertial pos="0.035706 0.021577 -3.2549e-07" quat="0.549973 -3.55205e-05 -5.09441e-05 0.835183" mass="0.046425" diaginertia="9.97494e-05 5.70296e-05 5.1671e-05" />
                       <joint name="joint_clip1_R" pos="0 0 0" axis="0 0 1" range="-3 3" />
-                      <!-- <geom mesh="link_clip1_R" rgba="0.752941 0.752941 0.752941 1"  class="visual" />
-                      <geom mesh="clip_collision"  class="collision" pos="0.008 -0.017 0.052" euler="2.02 0 3.1415"  friction="1 0.005 0.0001" /> -->
+                      <geom mesh="link_clip1_R" rgba="0.752941 0.752941 0.752941 1"  class="visual" />
+                      <geom mesh="clip_collision"  class="collision" pos="0.008 -0.017 0.052" euler="2.02 0 3.1415"  friction="1 0.005 0.0001" />
                     </body>
                     <body name="link_clip2_R" pos="0.018 0 0.077" quat="0.499998 0.5 -0.5 0.500002">
                       <inertial pos="0.036517 -0.020929 0.0010504" quat="0.816015 -0.144069 -0.0939692 0.551845" mass="0.049325" diaginertia="0.000110721 6.35463e-05 5.67782e-05" />
                       <joint name="joint_clip2_R" pos="0 0 0" axis="0 0 1" range="-3 3" />
-                      <!-- <geom mesh="link_clip2_R" rgba="0.752941 0.752941 0.752941 1"  class="visual"/>
-                      <geom mesh="clip_collision" class="collision" pos="0.008 0.0167 -0.055" euler="-2.0 0 0"  friction="1 0.005 0.0001" /> -->
+                      <geom mesh="link_clip2_R" rgba="0.752941 0.752941 0.752941 1"  class="visual"/>
+                      <geom mesh="clip_collision" class="collision" pos="0.008 0.0167 -0.055" euler="-2.0 0 0"  friction="1 0.005 0.0001" />
                     </body>
                   </body>
                 </body>
