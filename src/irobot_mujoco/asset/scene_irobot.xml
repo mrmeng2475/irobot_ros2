@@ -68,6 +68,13 @@
       <geom type="mesh" mesh="contact_cup_11" group="0"/>
     </body>
 
+    <body name="target_frame" mocap="true" pos="0 0 0">
+        <geom type="cylinder" size="0.005 0.05" pos="0.025 0 0" euler="0 1.5708 0" rgba="1 0 0 1" contype="0" conaffinity="0"/>
+        <geom type="cylinder" size="0.005 0.05" pos="0 0.025 0" euler=" 0 0 -1.5708" rgba="0 1 0 1" contype="0" conaffinity="0"/>
+        <geom type="cylinder" size="0.005 0.05" pos="0 0 0.025" euler="0 0 0" rgba="0 0 1 1" contype="0" conaffinity="0"/>
+        <geom type="sphere" size="0.01" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+    </body>
+
   </worldbody>
 
 </mujoco>

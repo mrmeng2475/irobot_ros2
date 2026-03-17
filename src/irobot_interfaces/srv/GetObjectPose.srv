@@ -1,0 +1,6 @@
+# Request: 客户端发送想要查询的物体名称 (例如: "bottle1", "cup1")
+string object_name
+---
+# Response: 服务端返回是否成功找到该物体，以及它的位姿
+bool success
+geometry_msgs/Pose pose

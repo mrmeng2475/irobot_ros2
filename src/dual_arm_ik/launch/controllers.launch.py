@@ -37,12 +37,12 @@ def generate_launch_description():
     )
 
     # # 启动头部控制节点
-    # head_control_node = Node(
-    #     package='dual_arm_ik',
-    #     executable='head_control_node',
-    #     name='head_control_node',
-    #     output='screen'
-    # )
+    head_control_node = Node(
+        package='dual_arm_ik',
+        executable='head_control_node',
+        name='head_control_node',
+        output='screen'
+    )
 
     # 启动关节状态聚合节点
     joint_state_aggregator_node = Node(
@@ -57,6 +57,6 @@ def generate_launch_description():
         # dual_arm_posture_node,
         gripper_control_node,
         clip_control_sim_real_node,
-        # head_control_node,
+        head_control_node,
         joint_state_aggregator_node
     ])

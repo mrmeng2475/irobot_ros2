@@ -103,10 +103,30 @@ target_link_libraries(clip_controller
   pthread
 )
 
+# --- 为 head_controller 定义 ---
+add_executable(head_controller src/head_controller.cpp)
+
+# 为 head_controller 链接ROS2的依赖
+ament_target_dependencies(head_controller
+  rclcpp
+  std_msgs
+  sensor_msgs
+  irobot_interfaces
+)
+
+# 为 head_controller 链接Mintasa SDK的核心库
+target_link_libraries(head_controller
+  ActuatorController
+  pthread
+)
+
+
+
 # 安装可执行文件
 install(TARGETS
   joint_controller
   R_controller
+  head_controller
   clip_controller
   R_whole_control
   DESTINATION lib/${PROJECT_NAME}
