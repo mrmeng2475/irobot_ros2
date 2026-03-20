@@ -27,7 +27,7 @@
       <geom type="box" size="0.25 0.45 0.01" pos="0 0 0.05" rgba="1 1 1 0.5"/>
     </body>
 
-    <body name="bottle" pos="0.41 -0.12 1.05" >
+    <!-- <body name="bottle" pos="0.41 -0.12 1.05" >
       <freejoint/>
       <inertial pos="0 0.0 0.01" mass="0.5" diaginertia="0.0005 0.0005 0.0005"/>
       <geom name="waterbottle_visual" type="mesh" mesh="waterbottle" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0" group="1"/>
@@ -38,12 +38,9 @@
 
       <geom type="mesh" mesh="contact_water_0"  group="0"/>
       <geom type="mesh" mesh="contact_water_1"  group="0"/>
+    </body> -->
 
-      
-
-    </body>
-
-    <body name="cup" pos="0.41 0.15 1.05" >
+    <!-- <body name="cup" pos="0.41 0.15 1.05" >
       <freejoint/>
       
       <inertial pos="0 0 0.01" mass="0.15" diaginertia="0.0005 0.0005 0.0005"/>
@@ -66,6 +63,21 @@
       <geom type="mesh" mesh="contact_cup_9"  group="0"/>
       <geom type="mesh" mesh="contact_cup_10" group="0"/>
       <geom type="mesh" mesh="contact_cup_11" group="0"/>
+    </body> -->
+
+    <body name="pink_box" pos="0.43 -0.15 1.03">
+      <freejoint/>
+      <geom type="box" size="0.025 0.025 0.025" rgba="1.0 0.4 0.7 1" mass="0.05"/>
+    </body>
+
+    <body name="blue_box" pos="0.38 0.0 1.03">
+      <freejoint/>
+      <geom type="box" size="0.025 0.025 0.025" rgba="0.0 0.5 1.0 1" mass="0.05"/>
+    </body>
+
+    <body name="orange_box" pos="0.43 0.15 1.03">
+      <freejoint/>
+      <geom type="box" size="0.025 0.025 0.025" rgba="1.0 0.5 0.0 1" mass="0.05"/>
     </body>
 
     <body name="target_frame" mocap="true" pos="0 0 0">
