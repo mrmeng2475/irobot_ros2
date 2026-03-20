@@ -53,6 +53,40 @@ target_link_libraries(R_whole_control
   pthread
 )
 
+# --- 为 L_whole_control 定义 --- 
+add_executable(L_whole_control src/L_whole_control.cpp)
+
+# 为 L_whole_control 链接ROS2的依赖
+ament_target_dependencies(L_whole_control
+  rclcpp
+  std_msgs
+  sensor_msgs
+  irobot_interfaces
+)
+
+# 为 L_whole_control 链接Mintasa SDK的核心库
+target_link_libraries(L_whole_control
+  ActuatorController
+  pthread
+)
+
+# --- 为 irobot_control 定义 --- 
+add_executable(irobot_control src/irobot_control.cpp)
+
+# 为 irobot_control 链接ROS2的依赖
+ament_target_dependencies(irobot_control
+  rclcpp
+  std_msgs
+  sensor_msgs
+  irobot_interfaces
+)
+
+# 为 irobot_control 链接Mintasa SDK的核心库
+target_link_libraries(irobot_control
+  ActuatorController
+  pthread
+)
+
 # 定义joint_controller节点可执行文件
 add_executable(joint_controller src/joint_controller.cpp)
 
@@ -129,6 +163,8 @@ install(TARGETS
   head_controller
   clip_controller
   R_whole_control
+  L_whole_control
+  irobot_control
   DESTINATION lib/${PROJECT_NAME}
 )
 

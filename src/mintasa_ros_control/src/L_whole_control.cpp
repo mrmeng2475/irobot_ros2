@@ -1,6 +1,6 @@
-// 最终合并版本：同时控制7个臂部关节和1个夹爪关节（ID 1-8）
-// 订阅 /joint_cmd 用于统一位置控制
-// 订阅 /clip_cmd 用于独立的夹爪模式（位置/电流）切换控制
+// 左臂合并版本：同时控制左侧7个臂部关节和1个夹爪关节（ID 11-18）
+// 订阅 /l_joint_cmd 用于统一位置控制
+// 订阅 /l_clip_cmd 用于独立的夹爪模式（位置/电流）切换控制
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "irobot_interfaces/msg/clip_command.hpp"
@@ -15,13 +15,14 @@
 
 using std::placeholders::_1;
 
-class MintasaUnifiedController : public rclcpp::Node
+class MintasaLeftUnifiedController : public rclcpp::Node
 {
 public:
-    MintasaUnifiedController()
-    : Node("mintasa_unified_controller")
+    MintasaLeftUnifiedController()
+    : Node("mintasa_left_unified_controller")
     {
-        inverted_joint_ids_ = {1, 3, 5, 6};
+        // 1. 设置左臂需要反向的电机 ID
+        inverted_joint_ids_ = {11, 13, 14, 15, 16};
 
         this->declare_parameter<double>("arm_velocity", 800.0);
         this->declare_parameter<double>("gripper_velocity", 200.0);
@@ -29,8 +30,8 @@ public:
         double arm_velocity = this->get_parameter("arm_velocity").as_double();
         double gripper_velocity = this->get_parameter("gripper_velocity").as_double();
 
-        RCLCPP_INFO(this->get_logger(), "臂部关节 (ID 1-7) 规划速度: %.2f", arm_velocity);
-        RCLCPP_INFO(this->get_logger(), "夹爪关节 (ID 8) 规划速度: %.2f", gripper_velocity);
+        RCLCPP_INFO(this->get_logger(), "左侧臂部关节 (ID 11-17) 规划速度: %.2f", arm_velocity);
+        RCLCPP_INFO(this->get_logger(), "左侧夹爪关节 (ID 18) 规划速度: %.2f", gripper_velocity);
 
         pController = ActuatorController::initController();
         Actuator::ErrorsDefine ec;
@@ -42,7 +43,9 @@ public:
         }
 
         auto found_ids_vec = pController->getActuatorIdArray();
-        std::vector<uint8_t> required_ids = {1, 2, 3, 4, 5, 6, 7, 8};
+        
+        // 2. 左臂所需的执行器 ID 列表
+        std::vector<uint8_t> required_ids = {11, 12, 13, 14, 15, 16, 17, 18};
         std::vector<uint8_t> missing_ids;
 
         for (uint8_t req_id : required_ids) {
@@ -56,52 +59,54 @@ public:
             for(auto id : missing_ids) {
                 missing_str += std::to_string(id) + " ";
             }
-            RCLCPP_FATAL(this->get_logger(), "启动失败！部分执行器未找到，缺失的ID: %s", missing_str.c_str());
+            RCLCPP_FATAL(this->get_logger(), "启动失败！部分左臂执行器未找到，缺失的ID: %s", missing_str.c_str());
             rclcpp::shutdown();
             return;
         }
 
 
         actuator_ids_ = required_ids;
-        RCLCPP_INFO(this->get_logger(), "已成功找到所有期望的执行器 (ID 1-8)。");
+        RCLCPP_INFO(this->get_logger(), "已成功找到所有期望的左臂执行器 (ID 11-18)。");
 
         for (const auto& id : actuator_ids_)
         {
             pController->enableActuator(id);
             pController->activateActuatorMode(id, Actuator::Mode_Profile_Pos);
-            if (id == 8) {
+            // 3. 针对左侧夹爪 (ID 18) 设置单独速度
+            if (id == 18) {
                 pController->setProfilePositionMaxVelocity(id, gripper_velocity);
             } else {
                 pController->setProfilePositionMaxVelocity(id, arm_velocity);
             }
         }
-        RCLCPP_INFO(this->get_logger(), "所有执行器均已使能、设置模式并设定各自的规划速度。");
+        RCLCPP_INFO(this->get_logger(), "所有左侧执行器均已使能、设置模式并设定各自的规划速度。");
 
         for(const auto& id : actuator_ids_) {
+            // 这里的关节名会自动映射为 joint11, joint12 ... joint18
             joint_name_to_id_map_["joint" + std::to_string(id)] = id;
         }
 
+        // 4. 修改话题名称，防止与右臂冲突
         joint_subscription_ = this->create_subscription<sensor_msgs::msg::JointState>(
-            "/joint_cmd", 10, std::bind(&MintasaUnifiedController::jointCommandCallback, this, _1));
+            "/l_joint_cmd", 10, std::bind(&MintasaLeftUnifiedController::jointCommandCallback, this, _1));
         
         clip_subscription_ = this->create_subscription<irobot_interfaces::msg::ClipCommand>(
-            "/clip_cmd", 10, std::bind(&MintasaUnifiedController::clipCommandCallback, this, _1));
+            "/l_clip_cmd", 10, std::bind(&MintasaLeftUnifiedController::clipCommandCallback, this, _1));
 
-        publisher_ = this->create_publisher<sensor_msgs::msg::JointState>("/hardware/joint_states", 10);
+        publisher_ = this->create_publisher<sensor_msgs::msg::JointState>("/hardware/l_joint_states", 10);
         
-        // --- 修正点：将 create_timer 修改为 create_wall_timer ---
         timer_ = this->create_wall_timer(
             std::chrono::milliseconds(20), 
-            std::bind(&MintasaUnifiedController::feedbackTimerCallback, this));
+            std::bind(&MintasaLeftUnifiedController::feedbackTimerCallback, this));
             
-        RCLCPP_INFO(this->get_logger(), "统一控制器初始化完成，已准备好接收 /joint_cmd 和 /clip_cmd 指令。");
+        RCLCPP_INFO(this->get_logger(), "左臂控制器初始化完成，已准备好接收 /l_joint_cmd 和 /l_clip_cmd 指令。");
     }
     
-    ~MintasaUnifiedController()
+    ~MintasaLeftUnifiedController()
     {
         if (pController && !actuator_ids_.empty())
         {
-            RCLCPP_INFO(this->get_logger(), "正在禁用所有执行器...");
+            RCLCPP_INFO(this->get_logger(), "正在禁用所有左侧执行器...");
             for(const auto& id : actuator_ids_) {
                 pController->disableActuator(id);
             }
@@ -131,7 +136,8 @@ private:
                 uint8_t actuator_id = it->second;
                 double target_actuator_pos;
 
-                if (actuator_id == 8) {
+                // 左侧夹爪 ID 为 18
+                if (actuator_id == 18) {
                     target_actuator_pos = position_cmd;
                 } else {
                     if (inverted_joint_ids_.count(actuator_id)) {
@@ -147,24 +153,25 @@ private:
 
     void clipCommandCallback(const irobot_interfaces::msg::ClipCommand::SharedPtr msg)
     {
-        const uint8_t CLIP_ACTUATOR_ID = 8;
+        // 设定左侧夹爪的 ID 为 18
+        const uint8_t CLIP_ACTUATOR_ID = 18;
 
         switch (msg->mode)
         {
             case 1:
-                RCLCPP_INFO(this->get_logger(), "接收到夹爪[位置]指令: %.2f", msg->value);
+                RCLCPP_INFO(this->get_logger(), "接收到左侧夹爪[位置]指令: %.2f", msg->value);
                 pController->activateActuatorMode(CLIP_ACTUATOR_ID, Actuator::Mode_Profile_Pos);
                 pController->setPosition(CLIP_ACTUATOR_ID, msg->value);
                 break;
             
             case 2:
-                RCLCPP_INFO(this->get_logger(), "接收到夹爪[电流]指令: %.2f", msg->value);
+                RCLCPP_INFO(this->get_logger(), "接收到左侧夹爪[电流]指令: %.2f", msg->value);
                 pController->activateActuatorMode(CLIP_ACTUATOR_ID, Actuator::Mode_Cur);
                 pController->setCurrent(CLIP_ACTUATOR_ID, msg->value);
                 break;
 
             default:
-                RCLCPP_WARN(this->get_logger(), "接收到未知的夹爪控制模式: %d", msg->mode);
+                RCLCPP_WARN(this->get_logger(), "接收到未知的左侧夹爪控制模式: %d", msg->mode);
                 break;
         }
     }
@@ -179,7 +186,8 @@ private:
             double current_actuator_pos = pController->getPosition(id, true);
             double final_position;
 
-            if (id == 8)
+            // 左侧夹爪 ID 为 18
+            if (id == 18)
             {
                 final_position = current_actuator_pos;
             }
@@ -211,7 +219,7 @@ private:
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<MintasaUnifiedController>());
+    rclcpp::spin(std::make_shared<MintasaLeftUnifiedController>());
     rclcpp::shutdown();
     return 0;
 }

@@ -17,9 +17,7 @@ class JointStateAggregatorNode(Node):
             'head_joint1', 'head_joint2'
         ]
         
-        # ++++++++++ 这里是关键的修改 ++++++++++
-        # 将发布的关节名修改为C++节点期望的格式 (移除了 "_R" 后缀)
-        # 并且，我们将关节8命名为 'joint8'，以对应夹爪 'joint_clip1_R'
+        # --- 右臂映射 (仿真名 -> 硬件ID名 1~7) ---
         self.right_arm_cmd_joint_names_map = {
             'right_arm_joint1': 'joint1',
             'right_arm_joint2': 'joint2',
@@ -28,9 +26,20 @@ class JointStateAggregatorNode(Node):
             'right_arm_joint5': 'joint5',
             'right_arm_joint6': 'joint6',
             'right_arm_joint7': 'joint7',
-            # 'right_hand_joint1': 'joint8' # 映射夹爪到ID为8的关节
+            # 夹爪由单独的 ClipCommand 控制，此处不映射
         }
-        # +++++++++++++++++++++++++++++++++++++
+
+        # --- 新增：左臂映射 (仿真名 -> 硬件ID名 11~17) ---
+        self.left_arm_cmd_joint_names_map = {
+            'left_arm_joint1': 'joint11',
+            'left_arm_joint2': 'joint12',
+            'left_arm_joint3': 'joint13',
+            'left_arm_joint4': 'joint14',
+            'left_arm_joint5': 'joint15',
+            'left_arm_joint6': 'joint16',
+            'left_arm_joint7': 'joint17',
+            # 夹爪由单独的 ClipCommand 控制，此处不映射
+        }
         
         self.joint_state_map = {name: 0.0 for name in self.all_joint_names}
         self.lock = threading.Lock()
@@ -47,13 +56,13 @@ class JointStateAggregatorNode(Node):
         self.full_state_pub = self.create_publisher(
             JointState, '/joint_states', 10)
             
-        # 用于发布右臂硬件控制指令的发布者
-        self.right_arm_cmd_pub = self.create_publisher(
-            JointState, '/joint_cmd', 10)
+        # 用于发布右臂和左臂硬件控制指令的发布者
+        self.right_arm_cmd_pub = self.create_publisher(JointState, '/r_joint_cmd', 10)
+        self.left_arm_cmd_pub = self.create_publisher(JointState, '/l_joint_cmd', 10)
             
         # 定时器，用于周期性发布消息
         self.publish_timer = self.create_timer(0.02, self.publish_states)
-        self.get_logger().info("✅ 关节状态聚合与指令分发节点已启动")
+        self.get_logger().info("✅ 关节状态聚合与双臂指令分发节点已启动")
 
     def update_map_callback(self, msg):
         with self.lock:
@@ -72,21 +81,38 @@ class JointStateAggregatorNode(Node):
             full_state_msg.position = [self.joint_state_map[name] for name in self.all_joint_names]
         self.full_state_pub.publish(full_state_msg)
 
-        # --- 2. 发布右臂的 /joint_cmd 用于硬件控制 ---
+        # --- 2. 发布右臂的 /r_joint_cmd 用于硬件控制 ---
         right_arm_cmd_msg = JointState()
         right_arm_cmd_msg.header.stamp = now
+        r_cmd_names = []
+        r_cmd_positions = []
         
-        cmd_names = []
-        cmd_positions = []
+        # --- 3. 发布左臂的 /l_joint_cmd 用于硬件控制 ---
+        left_arm_cmd_msg = JointState()
+        left_arm_cmd_msg.header.stamp = now
+        l_cmd_names = []
+        l_cmd_positions = []
         
         with self.lock:
+            # 提取右臂数据
             for source_name, target_name in self.right_arm_cmd_joint_names_map.items():
-                cmd_names.append(target_name)
-                cmd_positions.append(self.joint_state_map.get(source_name, 0.0))
+                r_cmd_names.append(target_name)
+                r_cmd_positions.append(self.joint_state_map.get(source_name, 0.0))
+                
+            # 提取左臂数据
+            for source_name, target_name in self.left_arm_cmd_joint_names_map.items():
+                l_cmd_names.append(target_name)
+                l_cmd_positions.append(self.joint_state_map.get(source_name, 0.0))
         
-        right_arm_cmd_msg.name = cmd_names
-        right_arm_cmd_msg.position = cmd_positions
+        # 发布右臂指令
+        right_arm_cmd_msg.name = r_cmd_names
+        right_arm_cmd_msg.position = r_cmd_positions
         self.right_arm_cmd_pub.publish(right_arm_cmd_msg)
+
+        # 发布左臂指令
+        left_arm_cmd_msg.name = l_cmd_names
+        left_arm_cmd_msg.position = l_cmd_positions
+        self.left_arm_cmd_pub.publish(left_arm_cmd_msg)
 
 
 def main(args=None):

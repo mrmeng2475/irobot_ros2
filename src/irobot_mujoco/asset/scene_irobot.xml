@@ -23,11 +23,11 @@
   <worldbody>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
     <geom name="floor" size="100 100 0.05" type="plane" material="groundplane"/>
-    <body name="table" pos="0.4 0 0.9">
+    <body name="table" pos="0.4 0 0.92">
       <geom type="box" size="0.25 0.45 0.01" pos="0 0 0.05" rgba="1 1 1 0.5"/>
     </body>
 
-    <body name="bottle" pos="0.41 -0.12 1.03" >
+    <body name="bottle" pos="0.41 -0.12 1.05" >
       <freejoint/>
       <inertial pos="0 0.0 0.01" mass="0.5" diaginertia="0.0005 0.0005 0.0005"/>
       <geom name="waterbottle_visual" type="mesh" mesh="waterbottle" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0" group="1"/>
@@ -43,7 +43,7 @@
 
     </body>
 
-    <body name="cup" pos="0.41 0.15 1.03" >
+    <body name="cup" pos="0.41 0.15 1.05" >
       <freejoint/>
       
       <inertial pos="0 0 0.01" mass="0.15" diaginertia="0.0005 0.0005 0.0005"/>
