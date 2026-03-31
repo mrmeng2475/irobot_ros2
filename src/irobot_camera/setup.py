@@ -30,6 +30,7 @@ setup(
             'head_track_node = irobot_camera.head_track:main',
             'head_track_service_node = irobot_camera.head_track_service:main',
             'object_position_node = irobot_camera.object_position:main',
+            'cube_position_node = irobot_camera.cube_position:main',
         ],
     },
 )

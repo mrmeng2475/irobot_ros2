@@ -18,7 +18,9 @@ class ArucoDetectorNode(Node):
         
         self.id_to_name = {
             40: "bottle1",
-            98: "cup1"
+            98: "cup1",
+            124: "cube_orange",
+            203: "cube_purple"
         }
 
         self.publisher_ = self.create_publisher(ObjectPose, 'detected_objects', 10)

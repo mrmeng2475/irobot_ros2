@@ -87,6 +87,23 @@ target_link_libraries(irobot_control
   pthread
 )
 
+# --- 为 dual_arm_controller 定义 ---
+add_executable(dual_arm_controller src/dual_arm_controller.cpp)
+
+# 为 dual_arm_controller 链接ROS2的依赖
+ament_target_dependencies(dual_arm_controller
+  rclcpp
+  std_msgs
+  sensor_msgs
+  irobot_interfaces
+)
+
+# 为 dual_arm_controller 链接Mintasa SDK的核心库
+target_link_libraries(dual_arm_controller
+  ActuatorController
+  pthread
+)
+
 # 定义joint_controller节点可执行文件
 add_executable(joint_controller src/joint_controller.cpp)
 
@@ -165,6 +182,7 @@ install(TARGETS
   R_whole_control
   L_whole_control
   irobot_control
+  dual_arm_controller
   DESTINATION lib/${PROJECT_NAME}
 )
 
