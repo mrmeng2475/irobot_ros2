@@ -222,7 +222,7 @@ ros2 run dual_arm_ik ik_posture_node
 ros2 run irobot_trajectory planner_node 
 ```
 
-### 终端4 (控制机器人双臂逆解)
+### 终端5 (大模型决策控制)
 ```bash
 . source.sh
 ros2 run irobot_decision decision_node 
