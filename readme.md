@@ -155,7 +155,7 @@ ros2 run irobot_trajectory irobot_plan3
 ### 终端1 (启动所有数据传输节点，包括仿真和真机，注意这个其它关完才能关掉这个节点)
 ```bash
 . source.sh
-ros2 launch dual_arm_ik controllers.launch
+ros2 launch dual_arm_ik controllers.launch.py
 ```
 
 ### 终端2 (启动相机摄像头)
@@ -191,4 +191,39 @@ ros2 run dual_arm_ik ik_posture_node
 ```bash
 . source.sh
 ros2 run irobot_trajectory irobot_plan4
+```
+
+
+# 在仿真中跑通大模型驱动仿真机器人
+
+### 终端1 (启动所有数据传输节点，包括仿真和真机，注意这个其它关完才能关掉这个节点)
+```bash
+. source.sh
+ros2 launch dual_arm_ik controllers.launch.py
+```
+
+### 终端2 (打开mujoco仿真)
+```bash
+. source.sh
+conda activate mujoco
+cd src/irobot_mujoco
+python irobot_mujoco4.py
+```
+
+### 终端3 (控制机器人双臂逆解)
+```bash
+. source.sh
+ros2 run dual_arm_ik ik_posture_node 
+```
+
+### 终端4 (控制机器人双臂逆解)
+```bash
+. source.sh
+ros2 run irobot_trajectory planner_node 
+```
+
+### 终端4 (控制机器人双臂逆解)
+```bash
+. source.sh
+ros2 run irobot_decision decision_node 
 ```

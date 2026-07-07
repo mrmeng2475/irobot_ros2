@@ -30,8 +30,10 @@ setup(
             'irobot_plan2 = irobot_trajectory.irobot_plan2:main',
             'irobot_plan3 = irobot_trajectory.irobot_plan3:main',
             'irobot_plan4 = irobot_trajectory.irobot_plan4:main',
+            'irobot_plan5 = irobot_trajectory.irobot_plan5:main',
             'cube_stack_mujoco = irobot_trajectory.cube_stack_mujoco:main',
             'twist_bottle_mujoco = irobot_trajectory.twist_bottle_mujoco:main',
+            'planner_node = irobot_trajectory.planner:main',
         ],
     },
 )
